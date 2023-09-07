@@ -1,13 +1,18 @@
 <div class="table jim">
-  <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand"><%= @name %></a>
-    <%= button_to "back", files_path, :method => :get, :type => "button", :class => "btn btn-outline-success my-2 my-sm-0" %>
-  </nav>
+  <div class="navbar">
+    <div class="pair grid jim">
+      <h2><%= @name %></h2>
+    </div>
+    <div class="pair grid jim">
+      <%= button_to "back", files_path, :method => :get, :type => "button", :class => "btn btn-outline-secondary my-2 my-sm-0" %>
+      <%= button_to "delete", {:controller => :files, :action => 'destroy', :id => @id }, :method => :delete, :type => "button", :class => "btn btn-outline-primary" %>
+    </div>
+  </div>
   <div class="table-responsive">
     <table class="table">
       <thead>
+        <th scope="col">#</th>
         <% @header.each do |datum| %>
-          <th scope="col">#</th>
           <th scope="col"><%= datum %></th>
         <% end %>
       </thead>

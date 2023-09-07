@@ -1,3 +1,5 @@
+require "csv"
+
 class Query < ApplicationRecord
   has_one_attached :context
   validates :name, presence: true
@@ -6,26 +8,9 @@ class Query < ApplicationRecord
   
   def process
     blob = self.context.download
-
-    lines = split_into_lines(blob)
-    header = split_into_fields(lines[0])
-    rows = []
-    lines.drop(1).each do |line|
-        rows.append(split_into_fields(line))
-    end
+    csv = CSV.new(blob)
+    header = csv.shift
+    rows = csv.read
     return {:header => header, :rows => rows}
   end
-
-  private
-    def split_into_lines(obj)
-      return obj.strip().split("\n")
-    end
-
-    def split_into_fields(line)
-      fields = []
-      line.strip().split(",").each do |f|
-        fields.append(f.strip())
-      end
-      return fields
-    end
 end

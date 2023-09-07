@@ -15,6 +15,7 @@ class FilesController < ApplicationController
     @rows = work[:rows]
     @name = query.name
     @timestamp = query.timestamp
+    @id = query.id
   end
 
   def destroy
@@ -26,6 +27,9 @@ class FilesController < ApplicationController
   private
     def query_params
       p = params.require(:Query).permit(:name, :context)
+      if p[:name].empty?
+        p[:name] = p[:context].original_filename
+      end
       p[:timestamp] = Time.now()
       return p
     end
