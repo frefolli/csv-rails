@@ -13,6 +13,7 @@ class FilesController < ApplicationController
     work = query.process
     @header =  work[:header]
     @rows = work[:rows]
+    flash[:error] = work[:error]
     @name = query.name
     @timestamp = query.timestamp
     @id = query.id

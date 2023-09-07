@@ -1,4 +1,9 @@
 <div class="table jim">
+  <% if flash[:error] %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <div class="navbar">
     <div class="pair grid jim">
       <h2><%= @name %></h2>

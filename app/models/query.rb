@@ -7,10 +7,14 @@ class Query < ApplicationRecord
   validates :timestamp, presence: true
   
   def process
-    blob = self.context.download
-    csv = CSV.new(blob)
-    header = csv.shift
-    rows = csv.read
-    return {:header => header, :rows => rows}
+    begin
+      blob = self.context.download
+      csv = CSV.new(blob)
+      header = csv.shift
+      rows = csv.read
+      return {:header => header, :rows => rows}
+    rescue
+      return {:header => [], :rows => [], :error => "Malformed CSV File"}
+    end
   end
 end
