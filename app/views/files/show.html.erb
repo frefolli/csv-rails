@@ -1,0 +1,26 @@
+<div class="table jim">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand"><%= @name %></a>
+    <%= button_to "back", files_path, :method => :get, :type => "button", :class => "btn btn-outline-success my-2 my-sm-0" %>
+  </nav>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <% @header.each do |datum| %>
+          <th scope="col">#</th>
+          <th scope="col"><%= datum %></th>
+        <% end %>
+      </thead>
+      <% i = 1 %>
+      <% @rows.each do |row| %>
+        <tr>
+          <th scope="row"><%= i %></th>
+          <% row.each do |datum| %>
+            <td><%= datum %></td>
+          <% end %>
+          <% i += 1 %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

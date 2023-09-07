@@ -1,0 +1,80 @@
+body {
+    background: lightblue;
+}
+
+
+div.title {
+    width: 100%
+}
+
+div.title h1,h2 {
+    text-align: center;
+}
+
+div.banner {
+    width: 100%
+}
+
+div.banner p {
+    text-align: center;
+}
+
+div.box h2 {
+    text-align: center;
+}
+
+div.box {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    border-collapse: collapse;
+    background: white;
+}
+
+div.flex {
+    display: flex;
+}
+
+div.grid {
+    display: grid;
+}
+
+div.grid.pair {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+div.pair {
+    gap: 30px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+div.pair label {
+    text-align: center;
+}
+
+div.grid.jim {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+div.table.jim {
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 5px;
+    padding: 1.5%;
+    overflow: hidden;
+}
+
+button {
+    width: 100%;
+}

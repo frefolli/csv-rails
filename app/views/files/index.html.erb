@@ -1,0 +1,43 @@
+<div class="title">
+  <h1>Files</h1>
+</div>
+
+<div class="pair grid jim">
+  <div class="table jim">
+  <%= form_for "Query" do |form| %>
+    <div class="pair grid jim">
+      <%= form.label :name %>
+      <%= form.text_field :name %><br>
+    </div>
+    <div class="pair grid jim">
+      <%= form.label :context %>
+      <%= form.file_field :context %><br>
+    </div>
+    <%= button_to "send", {:controller => :files, :action => 'create' }, :method => :post, :type => "button", :class => "btn btn-primary" %>
+  <% end %>
+  </div>
+
+  <div class="table jim">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <th scope="col">name</th>
+          <th scope="col">timestamp</th>
+          <th scope="col">actions</th>
+        </thead>
+        <% @queries.each do |q| %>
+          <tr>
+            <td><%= q.name %></td>
+            <td><%= q.timestamp %></td>
+            <td>
+              <div class="pair grid">
+                <%= button_to "show", {:controller => :files, :action => 'show', :id => q.id }, :method => :get, :type => "button", :class => "btn btn-primary" %>
+                <%= button_to "delete", {:controller => :files, :action => 'destroy', :id => q.id }, :method => :delete, :type => "button", :class => "btn btn-primary" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
